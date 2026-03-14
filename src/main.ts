@@ -269,6 +269,45 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+  const imageModal = document.getElementById('image-modal');
+  const expandedImg = document.getElementById('expanded-image') as HTMLImageElement;
+  const closeImageModal = document.getElementById('close-image-modal');
+
+  const openImageModal = (src: string) => {
+    if (!imageModal || !expandedImg) return;
+    audio.playSFX('levelup.ogg');
+    expandedImg.src = src;
+    imageModal.classList.add('active');
+  };
+
+  document.querySelectorAll('.gallery-frame img, .carousel-img').forEach(img => {
+    (img as HTMLElement).style.cursor = 'pointer';
+    img.addEventListener('click', () => {
+      openImageModal((img as HTMLImageElement).src);
+    });
+  });
+
+  closeImageModal?.addEventListener('click', () => {
+    audio.playSFX('back.ogg');
+    imageModal?.classList.remove('active');
+  });
+
+  imageModal?.addEventListener('click', (e) => {
+    if (e.target === imageModal) {
+      audio.playSFX('back.ogg');
+      imageModal.classList.remove('active');
+    }
+  });
+
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      if (imageModal?.classList.contains('active')) {
+        audio.playSFX('back.ogg');
+        imageModal.classList.remove('active');
+      }
+    }
+  });
+
   updateDownloadButtons();
 
   setInterval(() => rotateScreenshot(1, false), 5000);

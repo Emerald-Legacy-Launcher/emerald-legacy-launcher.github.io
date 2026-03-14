@@ -25,8 +25,8 @@ body {
   font-family: var(--font-pixel);
   background-color: var(--color-bg);
   color: var(--color-text);
-  overflow: hidden;
-  height: 100vh;
+  overflow-x: hidden;
+  min-height: 100vh;
   width: 100vw;
   user-select: none;
   image-rendering: pixelated;
@@ -82,8 +82,9 @@ body {
 .menu-container {
   display: flex;
   flex-direction: column;
-  height: 100vh;
-  padding: 20px 0;
+  min-height: 100vh;
+  height: auto;
+  padding: 40px 0;
   align-items: center;
 }
 
@@ -897,6 +898,9 @@ body {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 15px;
+  justify-content: center;
+  max-width: 900px;
+  margin: 0 auto;
 }
 
 .gallery-item {
@@ -938,5 +942,94 @@ body {
 @media (max-width: 600px) {
   .gallery-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+.launcher-previews {
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  margin-bottom: 20px;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (max-width: 1200px) {
+  .launcher-previews {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
+  .launcher-previews {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .launcher-previews {
+    grid-template-columns: 1fr;
+  }
+}
+
+.gallery-item.large {
+  max-width: 100%;
+}
+
+.gallery-item.large .gallery-frame {
+  height: auto;
+  aspect-ratio: 16/9;
+}
+
+.frame-caption {
+  position: absolute;
+  bottom: 10px;
+  right: 15px;
+  background: rgba(0, 0, 0, 0.8);
+  padding: 6px 14px;
+  border: 2px solid #5c5c5c;
+  color: #fff;
+  font-family: var(--font-silk);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  pointer-events: none;
+  z-index: 5;
+  box-shadow: 2px 2px 0 #000;
+}
+
+.gallery-item:hover .frame-caption {
+  border-color: var(--color-emerald);
+  color: var(--color-emerald);
+}
+
+.image-modal-content {
+  position: relative;
+  max-width: 90vw;
+  max-height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image-modal-content img {
+  max-width: 100%;
+  max-height: 90vh;
+  border: 8px solid #3c3c3c;
+  outline: 4px solid #1a1a1a;
+  box-shadow: 0 0 50px rgba(0, 0, 0, 1);
+}
+
+.expansion-close {
+  position: absolute;
+  top: -20px;
+  right: -20px;
+  z-index: 100;
+}
+
+@media (max-width: 800px) {
+  .menu-container {
+    width: 95vw;
+    margin: 20px auto;
   }
 }
