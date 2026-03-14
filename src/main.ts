@@ -3,10 +3,6 @@ import './style.css';
 document.addEventListener('DOMContentLoaded', () => {
   const tabs = document.querySelectorAll('.tab-item');
   const contents = document.querySelectorAll('.tab-content');
-  const prevBtn = document.getElementById('prev-tab');
-  const nextBtn = document.getElementById('next-tab');
-  const gotoFeatures = document.getElementById('goto-features');
-  const gotoDownload = document.getElementById('goto-download');
 
   let activeIndex = 0;
 
@@ -29,21 +25,31 @@ document.addEventListener('DOMContentLoaded', () => {
     tab.addEventListener('click', () => updateTabs(index));
   });
 
-  prevBtn?.addEventListener('click', () => updateTabs(activeIndex - 1));
-  nextBtn?.addEventListener('click', () => updateTabs(activeIndex + 1));
-
-  gotoFeatures?.addEventListener('click', (e) => {
-    e.preventDefault();
-    updateTabs(1);
-  });
-
-  gotoDownload?.addEventListener('click', (e) => {
-    e.preventDefault();
-    updateTabs(3);
-  });
-
   window.addEventListener('keydown', (e) => {
-    if (e.key === 'ArrowLeft') updateTabs(activeIndex - 1);
-    if (e.key === 'ArrowRight') updateTabs(activeIndex + 1);
+    if (e.key === 'q' || e.key === 'ArrowLeft') updateTabs(activeIndex - 1);
+    if (e.key === 'e' || e.key === 'ArrowRight') updateTabs(activeIndex + 1);
   });
+
+  document.getElementById('prev-tab')?.addEventListener('click', () => updateTabs(activeIndex - 1));
+  document.getElementById('next-tab')?.addEventListener('click', () => updateTabs(activeIndex + 1));
+
+  const carouselImg = document.querySelector('.carousel-img') as HTMLImageElement;
+  const screenshots = ['/TU7_Panorama_Background_S.png', '/logo.png'];
+  let screenIndex = 0;
+
+  const rotateScreenshot = (dir: number) => {
+    screenIndex = (screenIndex + dir + screenshots.length) % screenshots.length;
+    if (carouselImg) {
+      carouselImg.style.opacity = '0';
+      setTimeout(() => {
+        carouselImg.src = screenshots[screenIndex];
+        carouselImg.style.opacity = '1';
+      }, 100);
+    }
+  };
+
+  document.querySelector('.carousel-arrow.left')?.addEventListener('click', () => rotateScreenshot(-1));
+  document.querySelector('.carousel-arrow.right')?.addEventListener('click', () => rotateScreenshot(1));
+
+  setInterval(() => rotateScreenshot(1), 5000);
 });
