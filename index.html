@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8" />
-  <link rel="icon" type="image/svg+xml" href="/website/favicon.svg" />
+  <link rel="icon" type="image/png" href="/website/logo.png" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Emerald Legacy Launcher | Play Minecraft Legacy Edition</title>
   <meta name="description"
@@ -15,8 +15,8 @@
     href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&family=Silkscreen:wght@400;700&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <script type="module" crossorigin src="/website/assets/index-DD2hyJay.js"></script>
-  <link rel="stylesheet" crossorigin href="/website/assets/index-DSOHmVVI.css">
+  <script type="module" crossorigin src="/website/assets/index-DJVgPUQV.js"></script>
+  <link rel="stylesheet" crossorigin href="/website/assets/index-BvfiZIj5.css">
 </head>
 
 <body>
@@ -201,23 +201,37 @@
           </section>
 
           <section class="tab-content" id="download">
-            <div class="home-layout">
-              <div class="cta-section" style="margin-top: 50px;">
-                <h2>Download Emerald Legacy Launcher</h2>
+            <div class="features-layout">
+              <div class="overview-box" style="text-align: center;">
+                <h2>Get Emerald Legacy</h2>
+                <p>Select your operating system to view available installers and architectures.</p>
               </div>
-              <div class="action-buttons" style="margin-top: 20px;">
-                <a href="https://github.com/Emerald-Legacy-Launcher/Emerald-Legacy-Launcher/releases/latest"
-                  class="main-btn" id="download-win">
-                  <span>Download for Windows</span>
-                </a>
-                <a href="https://github.com/Emerald-Legacy-Launcher/Emerald-Legacy-Launcher/releases/latest"
-                  class="main-btn" id="download-linux">
-                  <span>Download for Linux</span>
-                </a>
-                <a href="https://github.com/Emerald-Legacy-Launcher/Emerald-Legacy-Launcher/releases/latest"
-                  class="main-btn" id="download-macos">
-                  <span>Download for macOS</span>
-                </a>
+
+              <div class="os-grid">
+                <div class="os-card">
+                  <div class="os-icon"><i class="fab fa-windows"></i></div>
+                  <h3>Windows</h3>
+                  <button class="main-btn os-btn" id="download-win">Select Version</button>
+                </div>
+                <div class="os-card">
+                  <div class="os-icon"><i class="fab fa-linux"></i></div>
+                  <h3>Linux</h3>
+                  <button class="main-btn os-btn" id="download-linux">Select Version</button>
+                </div>
+                <div class="os-card">
+                  <div class="os-icon"><i class="fab fa-apple"></i></div>
+                  <h3>macOS</h3>
+                  <button class="main-btn os-btn" id="download-macos">Select Version</button>
+                </div>
+              </div>
+
+              <div class="alpha-disclaimer" style="margin-top: auto; border-color: #7c7c7c;">
+                <div class="item-icon">⚠️</div>
+                <div class="disclaimer-text">
+                  <h3>Windows SmartScreen</h3>
+                  <p>Because the launcher is unsigned, Windows may show a warning. Click <strong>"More info"</strong>
+                    and then <strong>"Run anyway"</strong> to proceed safely.</p>
+                </div>
               </div>
             </div>
           </section>
