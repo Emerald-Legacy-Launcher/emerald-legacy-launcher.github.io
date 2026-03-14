@@ -14,6 +14,7 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&family=Silkscreen:wght@400;700&display=swap"
     rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 
 <body>
@@ -118,28 +119,57 @@
           </section>
 
           <section class="tab-content" id="features">
-            <div class="home-layout">
-              <div class="features-row">
-                <div class="feature-card">
-                  <div class="feature-image">⚙️</div>
-                  <div class="feature-info">
-                    <h3>Title Updates</h3>
-                    <p>Support for legacy console Title Updates and patches.</p>
+            <div class="features-layout scroll-content">
+              <div class="overview-section">
+                <div class="overview-box">
+                  <h2>Project Overview</h2>
+                  <p>Emerald Legacy started as a solo project to create a better way to play Legacy Console Edition. Our
+                    team brings together expertise from various preservation projects into one definitive hub.</p>
+                </div>
+                <div class="philosophy-box">
+                  <h2>Our Philosophy</h2>
+                  <p>Built on a modern Rust/Tauri stack, we deliver a high-performance, cross-platform experience that
+                    uses only ~15MB of RAM, leaving all resources for the game.</p>
+                </div>
+              </div>
+
+              <div class="core-features-grid">
+                <div class="grid-item">
+                  <div class="item-icon"><i class="fas fa-magic"></i></div>
+                  <div class="item-text">
+                    <h3>Easy Setup</h3>
+                    <p>Automated installation for TU19 and TU24, with more versions coming soon.</p>
                   </div>
                 </div>
-                <div class="feature-card">
-                  <div class="feature-image">🔧</div>
-                  <div class="feature-info">
-                    <h3>Mod Support</h3>
-                    <p>Easily apply mods and skins to your legacy experience.</p>
+                <div class="grid-item">
+                  <div class="item-icon"><i class="fab fa-rust"></i></div>
+                  <div class="item-text">
+                    <h3>Rust Backend</h3>
+                    <p>Memory-safe operations and game execution with minimal overhead.</p>
                   </div>
                 </div>
-                <div class="feature-card">
-                  <div class="feature-image">📡</div>
-                  <div class="feature-info">
-                    <h3>Server Browser</h3>
-                    <p>Find and join community-hosted legacy servers.</p>
+                <div class="grid-item">
+                  <div class="item-icon"><i class="fas fa-sliders"></i></div>
+                  <div class="item-text">
+                    <h3>Easy Config</h3>
+                    <p>Integrated settings to manage your username and game parameters directly.</p>
                   </div>
+                </div>
+                <div class="grid-item">
+                  <div class="item-icon"><i class="fas fa-rocket"></i></div>
+                  <div class="item-text">
+                    <h3>Tauri Frontend</h3>
+                    <p>Lightweight UI and configuration management via modern webview.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="content-footer">
+                <div class="roadmap-link">
+                  <a href="#">DEVELOPMENT ROADMAP &rarr;</a>
+                </div>
+                <div class="acknowledgments">
+                  <p>Developed by the Emerald Team. Original creators: 4J Studios & Mojang.</p>
                 </div>
               </div>
             </div>
