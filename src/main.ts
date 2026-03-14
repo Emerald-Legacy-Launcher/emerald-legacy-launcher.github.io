@@ -58,7 +58,6 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelector('.carousel-arrow.left')?.addEventListener('click', () => rotateScreenshot(-1));
   document.querySelector('.carousel-arrow.right')?.addEventListener('click', () => rotateScreenshot(1));
 
-  // --- Download Logic ---
   const repo = 'Emerald-Legacy-Launcher/Emerald-Legacy-Launcher';
   const modal = document.getElementById('download-modal');
   const modalOptions = document.getElementById('modal-options');
@@ -68,15 +67,22 @@ document.addEventListener('DOMContentLoaded', () => {
   let latestAssets: any[] = [];
 
   const detectOS = () => {
-    const ua = window.navigator.userAgent;
+    const ua = window.navigator.userAgent.toLowerCase();
+    const plat = (window.navigator as any).platform?.toLowerCase() || '';
     let os = 'Unknown';
     let arch = 'x64';
 
-    if (ua.indexOf('Win') !== -1) os = 'Windows';
-    if (ua.indexOf('Mac') !== -1) os = 'macOS';
-    if (ua.indexOf('Linux') !== -1) os = 'Linux';
+    if (ua.includes('win')) os = 'Windows';
+    else if (ua.includes('mac')) os = 'macOS';
+    else if (ua.includes('linux')) os = 'Linux';
 
-    if (ua.indexOf('arm64') !== -1 || ua.indexOf('aarch64') !== -1) {
+    if (
+      ua.includes('arm64') ||
+      ua.includes('aarch64') ||
+      plat.includes('arm64') ||
+      plat.includes('aarch64') ||
+      (os === 'macOS' && (window.navigator as any).maxTouchPoints > 0)
+    ) {
       arch = 'arm64';
     }
 
@@ -84,9 +90,21 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   const getRecommendedAsset = (os: string, arch: string, assets: any[]) => {
-    if (os === 'Windows') return assets.find(a => a.name.endsWith('.exe'));
-    if (os === 'macOS') return assets.find(a => a.name.endsWith(arch === 'arm64' ? 'aarch64.dmg' : 'x64.dmg'));
-    if (os === 'Linux') return assets.find(a => a.name.endsWith('.AppImage'));
+    if (os === 'Windows') {
+      return assets.find(a => a.name.endsWith('.exe')) || assets.find(a => a.name.endsWith('.msi'));
+    }
+    if (os === 'macOS') {
+      const suffix = arch === 'arm64' ? 'aarch64.dmg' : 'x64.dmg';
+      return assets.find(a => a.name.endsWith(suffix));
+    }
+    if (os === 'Linux') {
+      const archTag = arch === 'arm64' ? 'aarch64' : 'x86_64';
+      const specific = assets.find(a => a.name.endsWith('.AppImage') && a.name.includes(archTag));
+      if (specific) return specific;
+
+      // Fallback to any AppImage
+      return assets.find(a => a.name.endsWith('.AppImage'));
+    }
     return null;
   };
 
