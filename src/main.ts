@@ -1,7 +1,7 @@
 import './style.css';
 
 class AudioManager {
-  private musicFiles = ['/music/music1.ogg', '/music/music2.ogg', '/music/music3.ogg', '/music/music4.ogg', '/music/music5.ogg'];
+  private musicFiles = ['music/music1.ogg', 'music/music2.ogg', 'music/music3.ogg', 'music/music4.ogg', 'music/music5.ogg'];
   private musicIndex = Math.floor(Math.random() * 5);
   private music: HTMLAudioElement;
   private isMuted = false;
@@ -58,7 +58,7 @@ class AudioManager {
   }
 
   public playSFX(file: string) {
-    const sfx = new Audio(`/sounds/${file}`);
+    const sfx = new Audio(`sounds/${file}`);
     sfx.volume = 0.4;
     sfx.play().catch(() => { });
   }
@@ -110,12 +110,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const carouselImg = document.querySelector('.carousel-img') as HTMLImageElement;
   const screenshots = [
-    '/Community/image.png',
-    '/Community/image2.png',
-    '/Community/image3.png',
-    '/Community/image4.png',
-    '/Community/image5.png',
-    '/Community/image6.png'
+    'Community/image.png',
+    'Community/image2.png',
+    'Community/image3.png',
+    'Community/image4.png',
+    'Community/image5.png',
+    'Community/image6.png'
   ];
   let screenIndex = 0;
 
